@@ -60,7 +60,9 @@ def get_duration(input_file):
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
             text=True,
-            creationflags=subprocess.CREATE_NO_WINDOW if os.name == 'nt' else 0
+            creationflags=subprocess.CREATE_NO_WINDOW if os.name == 'nt' else 0,
+            encoding='utf-8',
+            errors='replace'
         )
         return float(result.stdout.strip())
     except Exception:
@@ -135,7 +137,9 @@ def process_video_file(video, out_dir, index, total_videos, encoder_choice):
         text=True,
         universal_newlines=True,
         bufsize=1,
-        creationflags=subprocess.CREATE_NO_WINDOW if os.name == 'nt' else 0
+        creationflags=subprocess.CREATE_NO_WINDOW if os.name == 'nt' else 0,
+        encoding='utf-8',
+        errors='replace'
     )
     current_process = process
     
